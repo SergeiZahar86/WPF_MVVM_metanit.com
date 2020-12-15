@@ -7,6 +7,7 @@ using System.Windows.Input;
 
 namespace WPF_MVVM_metanit.com
 {
+    /* Этот класс необязателен. На обновления не влияет*/
     public class RelayCommand : ICommand
     {
         private Action<object> execute;

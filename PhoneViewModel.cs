@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 
 namespace WPF_MVVM_metanit.com
 {
-    public class PhoneViewModel : INotifyPropertyChanged
+    /* Этот класс необязателен. На обновления не влияет*/
+    public class PhoneViewModel : INotifyPropertyChanged 
     {
         private Phone phone;
 

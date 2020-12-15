@@ -24,7 +24,7 @@ namespace WPF_MVVM_metanit.com
         {
             InitializeComponent();
 
-            DataContext = new ApplicationViewModel();
+            DataContext = new ApplicationViewModel(); // Это обязательно должно быть
         }
     }
 }
