@@ -12,7 +12,7 @@ namespace WPF_MVVM_metanit.com
     public class ApplicationViewModel : INotifyPropertyChanged
     {
         System.Windows.Threading.DispatcherTimer dispatcherTimer;   // Таймер
-
+        private static ApplicationViewModel instance;
 
         private Phone selectedPhone;
 
@@ -20,7 +20,7 @@ namespace WPF_MVVM_metanit.com
 
         // команда добавления нового объекта
         private RelayCommand addCommand;
-        public RelayCommand AddCommand
+        public RelayCommand AddCommand // если этот класс синглентон, то команда не работает
         {
             get
             {
@@ -34,10 +34,23 @@ namespace WPF_MVVM_metanit.com
             }
         }
 
-
+        public static ApplicationViewModel getInstance()
+        {
+            if(instance == null)
+            {
+                instance = new ApplicationViewModel();
+                return instance;
+            }
+            else
+            {
+                return instance;
+            }
+        }
         private void OnTimedEvent(Object source, EventArgs e)      // Получение вагонов с сервера по таймеру
         {
             Phone phone = new Phone { Title = "iPhone 7", Company = "Apple", Price = 56000 };
+            Phone phone1 = new Phone("sdf", "sdf", 444);
+            Phones.Insert(0, phone1);
             Phones.Insert(0, phone);
 
         }
@@ -64,7 +77,7 @@ namespace WPF_MVVM_metanit.com
             // Таймер ///////////////////////////////////////
             dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
             dispatcherTimer.Tick += new EventHandler(OnTimedEvent);
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 2);
             dispatcherTimer.Start();                    // Стартуем таймер
         }
 

@@ -27,9 +27,9 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="0.2*" />
         </Grid.RowDefinitions>
-        <ListBox Grid.Column="0" ItemsSource="{Binding Phones}"
+        <DataGrid x:Name="datagrid" Grid.Column="0" ItemsSource="{Binding Phones}"
                  SelectedItem="{Binding SelectedPhone}">
-            <ListBox.ItemTemplate>
+            <DataGrid.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Margin="5">
                         <TextBlock FontSize="18" Text="{Binding Path=Title}" />
@@ -37,10 +37,11 @@
                         <TextBlock Text="{Binding Path=Price}" />
                     </StackPanel>
                 </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+            </DataGrid.ItemTemplate>
+        </DataGrid>
         <StackPanel Grid.Row="1" Orientation="Horizontal">
             <Button Command="{Binding AddCommand}">+</Button>
+            <Button x:Name="but" Content="add" Click="but_Click"/>
         </StackPanel>
         <StackPanel Grid.Column="1" DataContext="{Binding SelectedPhone}">
             <TextBlock Text="Выбранный элемент"  />

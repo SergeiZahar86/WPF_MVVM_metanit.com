@@ -10,6 +10,17 @@ namespace WPF_MVVM_metanit.com
 {
     public class Phone : INotifyPropertyChanged
     {
+        public Phone(string tit, string com, int pr)
+        {
+            Title = tit;
+            Company = com;
+            Price = pr;
+        }
+        public Phone()
+        {
+
+        }
+
         private string title;
         private string company;
         private int price;
